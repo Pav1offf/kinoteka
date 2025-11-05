@@ -1,0 +1,22 @@
+.ratingGreen,
+.ratingOrange,
+.ratingRed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 20px;
+  margin: 5px 0;
+}
+
+.ratingGreen {
+  background-color: green;
+}
+
+.ratingOrange {
+  background-color: orange;
+}
+
+.ratingRed {
+  background-color: red;
+}
