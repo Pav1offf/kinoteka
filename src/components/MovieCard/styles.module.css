@@ -13,7 +13,7 @@
 
 .image:hover {
   opacity: 0.9;
-  scale: 1.02;
+  scale: 1.05;
 }
 
 .image img {
@@ -29,25 +29,16 @@
   padding: 10px;
 }
 
-/* .title {
+.title {
   font-size: 18px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-} */
-
-.genre {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.rating {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70px;
-  height: 20px;
-  margin: 5px 0;
-  color: red;
+.ratings {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  z-index: 2;
 }
