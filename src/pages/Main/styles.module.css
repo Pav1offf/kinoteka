@@ -3,3 +3,32 @@
   padding: 24px;
   min-height: 100vh;
 }
+
+.dark main {
+  background-color: #17181f;
+}
+
+.light main {
+  background-color: white;
+}
+
+.dark p,
+.dark h1,
+.dark h3 {
+  color: white;
+}
+.dark svg {
+  fill: aqua;
+  stroke: blue;
+}
+
+.light p,
+.light h1,
+.light h3 {
+  color: #17181f;
+}
+
+.light svg {
+  fill: red;
+  stroke: blue;
+}
