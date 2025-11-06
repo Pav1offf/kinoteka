@@ -3,8 +3,15 @@
   align-items: center;
   width: 100%;
   padding: 12px 24px;
-  background-color: wheat;
   gap: 32px;
+}
+
+.dark {
+  background-color: #17181f;
+}
+
+.light {
+  background-color: white;
 }
 
 .left {
@@ -22,10 +29,22 @@
   font-size: 32px;
 }
 
+.theme {
+  width: 32px;
+  height: 32px;
+}
+
 @media (max-width: 768px) {
   .header {
-    flex-direction: column;
-    align-items: self-start;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .left {
+    order: -2;
+  }
+  .theme {
+    order: -1;
+    justify-self: end;
   }
 }

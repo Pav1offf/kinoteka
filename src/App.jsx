@@ -1,11 +1,11 @@
-import Header from "./components/Header/Header";
 import Main from "./pages/Main/Main";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <Main />
-    </>
+    </ThemeProvider>
   );
 }
 
