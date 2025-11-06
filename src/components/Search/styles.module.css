@@ -1,13 +1,28 @@
 .search {
   display: flex;
   width: 100%;
-  background-color: wheat;
   gap: 12px;
 }
 
 .input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #f2f3f5;
+  border: 1px solid #77787a;
   border-radius: 12px;
+}
+
+.dark .input {
+  background-color: #212830;
+  color: white;
+}
+
+.light .input {
+  background-color: white;
+  color: #212830;
+}
+
+@media (max-width: 768px) {
+  .search {
+    grid-column: span 2;
+  }
 }
