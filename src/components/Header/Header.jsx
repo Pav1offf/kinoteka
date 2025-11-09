@@ -3,9 +3,16 @@ import { themeIcons } from "../../assets";
 import Search from "../Search/Search";
 import styles from "./styles.module.css";
 import { ThemeContext } from "../../context/ThemeContext";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ keywords, setKeywords }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
+
+  const navigate = useNavigate();
+
+  const navigateTo = () => {
+    navigate(`/`);
+  };
 
   return (
     <header
@@ -13,7 +20,7 @@ const Header = ({ keywords, setKeywords }) => {
         theme === "light" ? styles.dark : styles.light
       }`}
     >
-      <div className={styles.left}>
+      <div onClick={() => navigateTo()} className={styles.left}>
         <div className={styles.logo} alt="logo" />
         <h1 className={styles.title}>KINOTEKA</h1>
       </div>
