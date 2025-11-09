@@ -1,6 +1,7 @@
 .main {
-  display: flex;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 50px;
   width: 100%;
   padding: 24px;
   min-height: 100vh;
@@ -15,7 +16,9 @@
 }
 
 .dark p,
+.dark span,
 .dark h1,
+.dark h2,
 .dark h3 {
   color: white;
 }
@@ -25,21 +28,19 @@
 }
 
 .light p,
+.light span,
 .light h1,
+.light h2,
 .light h3 {
   color: #17181f;
-}
-
-.light svg {
-  fill: red;
-  stroke: blue;
 }
 
 .image {
   width: 100%;
   height: auto;
   position: relative;
-  background-color: #f2f4f5;
+  padding-top: 146%;
+  background-color: inherit;
 }
 
 .image img {
@@ -47,10 +48,85 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 .title {
   font-size: 36px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.4;
+}
+
+.desc {
+  font-size: 16px;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+
+.button {
+  background-color: #ff5c00;
+  padding: 10px 30px;
+  margin-bottom: 30px;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  transition: all 0.3s ease-out;
+}
+
+.button:hover {
+  background-color: #ff1d00;
+  scale: 1.1;
+  color: #fff;
+}
+
+.params {
+  padding-top: 30px;
+}
+
+.params div {
+  margin-bottom: 15px;
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  grid-gap: 30px;
+}
+
+.ratings {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.ratingGreen {
+  font-size: 36px;
+  color: green;
+}
+.ratingGreen span {
+  font-size: 16px;
+}
+
+.ratingOrange {
+  font-size: 36px;
+  color: orange;
+}
+.ratingOrange span {
+  font-size: 16px;
+}
+
+.ratingRed {
+  font-size: 36px;
+  color: red;
+}
+.ratingRed span {
+  font-size: 16px;
 }
