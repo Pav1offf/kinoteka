@@ -1,6 +1,7 @@
 .card {
   position: relative;
   width: 100%;
+  cursor: pointer;
 }
 
 .image {
@@ -34,7 +35,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  cursor: pointer;
 }
 
 .ratings {
