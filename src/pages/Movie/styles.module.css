@@ -1,6 +1,7 @@
 .main {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: minmax(200px, 400px) 1fr 200px;
+  /* grid-template-columns: repeat(auto-fill, minmax(300px, 500),minmax(300px, 500), 1fr); */
   gap: 50px;
   width: 100%;
   padding: 24px;
@@ -41,7 +42,7 @@
   width: 100%;
   height: auto;
   position: relative;
-  padding-top: 146%;
+  padding-top: 150%;
   background-color: inherit;
 }
 
@@ -110,6 +111,12 @@ a:hover {
   color: #ff5c00;
 }
 
+.infoRight {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .ratings {
   display: flex;
   flex-direction: column;
@@ -139,4 +146,34 @@ a:hover {
 }
 .ratingRed span {
   font-size: 16px;
+}
+
+.actors {
+  display: flex;
+  flex-direction: column;
+}
+
+.actorsTitle {
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.actor {
+  padding-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .infoRight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

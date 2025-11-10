@@ -84,3 +84,20 @@ export const getSearchMovies = async ({ keyword, page = 1 }) => {
     console.log(error);
   }
 };
+
+export const getStaff = async (filmId = 301) => {
+  try {
+    const response = await axios.get(`${BASE_API}v1/staff`, {
+      headers: {
+        "X-API-KEY": API_KEY,
+        "Content-Type": "application/json",
+      },
+      params: {
+        filmId,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
