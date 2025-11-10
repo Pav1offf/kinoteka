@@ -22,8 +22,9 @@ export const getMovie = async (id = 303) => {
 export const getMoviesFilters = async ({
   order = "RATING",
   type = "ALL",
-  yearFrom = 2000,
-  yearTo = 2000,
+  yearFrom,
+  yearTo,
+  genres,
 }) => {
   try {
     const response = await axios.get(`${BASE_API}v2.2/films`, {
@@ -36,6 +37,7 @@ export const getMoviesFilters = async ({
         type,
         yearFrom,
         yearTo,
+        genres,
       },
     });
     return response.data;

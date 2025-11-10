@@ -3,6 +3,7 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { Route, Routes } from "react-router-dom";
 import Movie from "./pages/Movie/Movie";
 import MoviesYear from "./pages/MoviesYear/MoviesYear";
+import MoviesGenre from "./pages/MoviesGenre/MoviesGenre";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/movie/:id" element={<Movie />} />
         <Route path="/lists/movies/:year" element={<MoviesYear />} />
+        <Route path="/lists/movies/genre/:genre" element={<MoviesGenre />} />
       </Routes>
     </ThemeProvider>
   );
