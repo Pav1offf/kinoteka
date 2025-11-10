@@ -38,8 +38,12 @@ const Movie = () => {
 
   const navigate = useNavigate();
 
-  const navigateTo = () => {
+  const navigateToYear = () => {
     navigate(`/lists/movies/${product.year}`);
+  };
+
+  const navigateToGenre = (genre) => {
+    navigate(`/lists/movies/genre/${genre}`);
   };
 
   return (
@@ -71,12 +75,9 @@ const Movie = () => {
             <div className={styles.params}>
               <div>
                 <span>Год производства</span>
-                <span
-                  onClick={() => navigateTo(product.year)}
-                  className={styles.year}
-                >
+                <a onClick={() => navigateToYear(product.year)}>
                   {product.year}
-                </span>
+                </a>
               </div>
 
               <div>
@@ -96,10 +97,13 @@ const Movie = () => {
                 <span>
                   {product.genres?.map((item, index, array) => {
                     return (
-                      <span key={index}>
+                      <a
+                        key={index}
+                        onClick={() => navigateToGenre(item.genre)}
+                      >
                         {item.genre}
                         {index < array.length - 1 && ", "}{" "}
-                      </span>
+                      </a>
                     );
                   })}
                 </span>
