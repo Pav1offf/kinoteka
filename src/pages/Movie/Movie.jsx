@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import { getMovie } from "../../api/apiMovie";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
 import Header from "../../components/Header/Header";
 
@@ -36,6 +36,12 @@ const Movie = () => {
     fetchMovie(id);
   }, [id]);
 
+  const navigate = useNavigate();
+
+  const navigateTo = () => {
+    navigate(`/lists/movies/${product.year}`);
+  };
+
   return (
     <div className={`${theme === "light" ? styles.dark : styles.light}`}>
       <Header keywords={keywords} setKeywords={setKeywords} />
@@ -65,7 +71,12 @@ const Movie = () => {
             <div className={styles.params}>
               <div>
                 <span>Год производства</span>
-                <span>{product.year}</span>
+                <span
+                  onClick={() => navigateTo(product.year)}
+                  className={styles.year}
+                >
+                  {product.year}
+                </span>
               </div>
 
               <div>

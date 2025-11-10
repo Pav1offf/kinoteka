@@ -20,6 +20,7 @@ const MovieCard = ({ movie }) => {
           {movie.ratingKinopoisk ? (
             <Rating rating={movie.ratingKinopoisk} name={"КП "} />
           ) : null}
+          {movie.rating ? <Rating rating={movie.rating} name={"КП "} /> : null}
         </div>
       </div>
       <div className={styles.info}>
