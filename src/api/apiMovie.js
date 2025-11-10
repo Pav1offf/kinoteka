@@ -19,6 +19,31 @@ export const getMovie = async (id = 303) => {
   }
 };
 
+export const getMoviesFilters = async ({
+  order = "RATING",
+  type = "ALL",
+  yearFrom = 2000,
+  yearTo = 2000,
+}) => {
+  try {
+    const response = await axios.get(`${BASE_API}v2.2/films`, {
+      headers: {
+        "X-API-KEY": API_KEY,
+        "Content-Type": "application/json",
+      },
+      params: {
+        order,
+        type,
+        yearFrom,
+        yearTo,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getMovies = async (type = "TOP_POPULAR_ALL", page = 1) => {
   try {
     const response = await axios.get(`${BASE_API}v2.2/films/collections`, {
