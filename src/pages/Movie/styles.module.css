@@ -16,6 +16,7 @@
 }
 
 .dark p,
+.dark a,
 .dark span,
 .dark h1,
 .dark h2,
@@ -28,6 +29,7 @@
 }
 
 .light p,
+.light a,
 .light span,
 .light h1,
 .light h2,
@@ -100,10 +102,11 @@
   grid-gap: 30px;
 }
 
-.year {
+a {
   cursor: pointer;
 }
-.year:hover {
+
+a:hover {
   color: #ff5c00;
 }
 
