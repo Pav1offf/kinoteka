@@ -5,9 +5,8 @@ import styles from "./styles.module.css";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
-const Header = ({ keywords, setKeywords }) => {
+const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-
   const navigate = useNavigate();
 
   const navigateTo = () => {
@@ -24,7 +23,7 @@ const Header = ({ keywords, setKeywords }) => {
         <div className={styles.logo} alt="logo" />
         <h1 className={styles.title}>KINOTEKA</h1>
       </div>
-      <Search keywords={keywords} setKeywords={setKeywords} />
+      <Search />
       <img
         src={theme === "light" ? themeIcons.light : themeIcons.dark}
         alt="theme"
