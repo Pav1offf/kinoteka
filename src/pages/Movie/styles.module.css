@@ -24,10 +24,6 @@
 .dark h3 {
   color: white;
 }
-.dark svg {
-  fill: aqua;
-  stroke: blue;
-}
 
 .light p,
 .light a,
