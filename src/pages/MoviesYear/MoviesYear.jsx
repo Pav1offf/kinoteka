@@ -6,10 +6,13 @@ import Header from "../../components/Header/Header";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useParams } from "react-router-dom";
+import Pagination from "../../components/Pagination/Pagination";
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
   const [keywords, setKeywords] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(10);
   const { year } = useParams();
   const debouncedKeywords = useDebounce(keywords, 1500);
 
@@ -17,8 +20,13 @@ const Main = () => {
 
   const fetchFiltersMovies = async () => {
     try {
-      const response = await getMoviesFilters({ yearFrom: year, yearTo: year });
+      const response = await getMoviesFilters({
+        yearFrom: year,
+        yearTo: year,
+        page: currentPage,
+      });
       setMovies(response.items);
+      setTotalPages(response.totalPages);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +34,7 @@ const Main = () => {
 
   useEffect(() => {
     fetchFiltersMovies(year);
-  }, []);
+  }, [currentPage]);
 
   return (
     <div className={`${theme === "light" ? styles.dark : styles.light}`}>
@@ -34,6 +42,11 @@ const Main = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>Лучшие фильмы {year} года</h1>
         <MovieList movies={movies} />
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </main>
     </div>
   );
