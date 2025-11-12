@@ -46,7 +46,7 @@ export const getMoviesFilters = async ({
   }
 };
 
-export const getMovies = async (type = "TOP_POPULAR_ALL", page = 1) => {
+export const getMovies = async ({ type = "TOP_POPULAR_ALL", page = 1 }) => {
   try {
     const response = await axios.get(`${BASE_API}v2.2/films/collections`, {
       headers: {
