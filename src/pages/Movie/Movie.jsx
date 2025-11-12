@@ -57,6 +57,10 @@ const Movie = () => {
     navigate(`/lists/movies/genre/${genre}`);
   };
 
+  const navigateToPerson = (personId) => {
+    navigate(`/name/${personId}`);
+  };
+
   return (
     <div className={`${theme === "light" ? styles.dark : styles.light}`}>
       <Header keywords={keywords} setKeywords={setKeywords} />
@@ -123,10 +127,13 @@ const Movie = () => {
                     .slice(0, 3)
                     .map((item, index, array) => {
                       return (
-                        <span key={index}>
+                        <a
+                          key={index}
+                          onClick={() => navigateToPerson(item.staffId)}
+                        >
                           {item.nameRu}
                           {index < array.length - 1 && ", "}{" "}
-                        </span>
+                        </a>
                       );
                     })}
                 </span>
@@ -139,10 +146,13 @@ const Movie = () => {
                     .slice(0, 3)
                     .map((item, index, array) => {
                       return (
-                        <span key={index}>
+                        <a
+                          key={index}
+                          onClick={() => navigateToPerson(item.staffId)}
+                        >
                           {item.nameRu}
                           {index < array.length - 1 && ", "}{" "}
-                        </span>
+                        </a>
                       );
                     })}
                 </span>
@@ -154,10 +164,13 @@ const Movie = () => {
                     .filter((item) => item.professionKey === "OPERATOR")
                     .map((item, index, array) => {
                       return (
-                        <span key={index}>
+                        <a
+                          key={index}
+                          onClick={() => navigateToPerson(item.staffId)}
+                        >
                           {item.nameRu}
                           {index < array.length - 1 && ", "}{" "}
-                        </span>
+                        </a>
                       );
                     })}
                 </span>
@@ -169,10 +182,13 @@ const Movie = () => {
                     .filter((item) => item.professionKey === "COMPOSER")
                     .map((item, index, array) => {
                       return (
-                        <span key={index}>
+                        <a
+                          key={index}
+                          onClick={() => navigateToPerson(item.staffId)}
+                        >
                           {item.nameRu}
                           {index < array.length - 1 && ", "}{" "}
-                        </span>
+                        </a>
                       );
                     })}
                 </span>
@@ -184,10 +200,13 @@ const Movie = () => {
                     .filter((item) => item.professionKey === "EDITOR")
                     .map((item, index, array) => {
                       return (
-                        <span key={index}>
+                        <a
+                          key={index}
+                          onClick={() => navigateToPerson(item.staffId)}
+                        >
                           {item.nameRu}
                           {index < array.length - 1 && ", "}{" "}
-                        </span>
+                        </a>
                       );
                     })}
                 </span>
@@ -234,7 +253,11 @@ const Movie = () => {
                 .slice(0, 10)
                 .map((item, index) => {
                   return (
-                    <a key={index} className={styles.actor}>
+                    <a
+                      key={index}
+                      className={styles.actor}
+                      onClick={() => navigateToPerson(item.staffId)}
+                    >
                       {item.nameRu}
                     </a>
                   );
