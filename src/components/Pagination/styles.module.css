@@ -1,0 +1,47 @@
+.pagination {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark .pageNumber,
+.dark .arrow {
+  background-color: #17181f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.light .pageNumber,
+.light .arrow {
+  background-color: white;
+  color: #17181f;
+  border: none;
+  cursor: pointer;
+}
+
+.dark .pageNumber:disabled,
+.dark .arrow:disabled {
+  cursor: default;
+  background-color: #212830;
+  border-radius: 20%;
+}
+
+.light .pageNumber:disabled,
+.light .arrow:disabled {
+  cursor: default;
+  background-color: #9ea0a1;
+  border-radius: 20%;
+}
+
+.pageNumber {
+  padding: 8px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

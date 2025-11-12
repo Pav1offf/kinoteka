@@ -5,9 +5,12 @@ import MovieList from "../../components/MovieList/MovieList";
 import Header from "../../components/Header/Header";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useParams } from "react-router-dom";
+import Pagination from "../../components/Pagination/Pagination";
 
 const SearchPage = () => {
   const [movies, setMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(10);
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { query } = useParams();
 
@@ -15,6 +18,7 @@ const SearchPage = () => {
     try {
       const response = await getSearchMovies({
         keyword: query,
+        page: currentPage,
       });
       setMovies(response.films);
     } catch (error) {
@@ -23,15 +27,20 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    fetchSearchMovie(query);
-  }, [query]);
+    fetchSearchMovie();
+  }, [query, currentPage]);
 
   return (
     <div className={`${theme === "light" ? styles.dark : styles.light}`}>
       <Header setMovies={() => setMovies(response.films)} movies={movies} />
       <main className={styles.main}>
-        <h1>Фильмы и сериалы по запросу {query}:</h1>
+        <h1 className={styles.title}>Фильмы и сериалы по запросу {query}:</h1>
         <MovieList movies={movies} />
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </main>
     </div>
   );
