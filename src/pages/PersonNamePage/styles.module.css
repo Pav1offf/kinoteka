@@ -1,0 +1,175 @@
+.main {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr 200px;
+  /* grid-template-columns: repeat(auto-fill, minmax(300px, 500),minmax(300px, 500), 1fr); */
+  gap: 50px;
+  width: 100%;
+  padding: 24px;
+  min-height: 100vh;
+}
+
+.dark main {
+  background-color: #17181f;
+}
+
+.light main {
+  background-color: white;
+}
+
+.dark p,
+.dark a,
+.dark span,
+.dark h1,
+.dark h2,
+.dark h3 {
+  color: white;
+}
+
+.light p,
+.light a,
+.light span,
+.light h1,
+.light h2,
+.light h3 {
+  color: #17181f;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding-top: 150%;
+  background-color: inherit;
+}
+
+.image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.title {
+  font-size: 36px;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.4;
+}
+
+.desc {
+  font-size: 16px;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+
+.button {
+  background-color: #ff5c00;
+  padding: 10px 30px;
+  margin-bottom: 30px;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  transition: all 0.3s ease-out;
+}
+
+.button:hover {
+  background-color: #ff1d00;
+  scale: 1.1;
+  color: #fff;
+}
+
+.params {
+  padding-top: 30px;
+}
+
+.params div {
+  margin-bottom: 15px;
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  grid-gap: 30px;
+}
+
+a {
+  cursor: pointer;
+}
+
+a:hover {
+  color: #ff5c00;
+}
+
+.infoRight {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.ratings {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.ratingGreen {
+  font-size: 36px;
+  color: green;
+}
+.ratingGreen span {
+  font-size: 16px;
+}
+
+.ratingOrange {
+  font-size: 36px;
+  color: orange;
+}
+.ratingOrange span {
+  font-size: 16px;
+}
+
+.ratingRed {
+  font-size: 36px;
+  color: red;
+}
+.ratingRed span {
+  font-size: 16px;
+}
+
+.actors {
+  display: flex;
+  flex-direction: column;
+}
+
+.actorsTitle {
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.actor {
+  padding-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    gap: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .infoRight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

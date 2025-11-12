@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { genres } from "../../api/genres";
 import Pagination from "../../components/Pagination/Pagination";
 
-const Main = () => {
+const MoviesGenre = () => {
   const [movies, setMovies] = useState([]);
   const [keywords, setKeywords] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -54,4 +54,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MoviesGenre;
