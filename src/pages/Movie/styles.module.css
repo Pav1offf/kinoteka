@@ -1,6 +1,6 @@
 .main {
   display: grid;
-  grid-template-columns: minmax(200px, 400px) 1fr 200px;
+  grid-template-columns: minmax(200px, 400px) minmax(370px, 1fr) 200px;
   /* grid-template-columns: repeat(auto-fill, minmax(300px, 500),minmax(300px, 500), 1fr); */
   gap: 50px;
   width: 100%;
@@ -158,12 +158,16 @@ a:hover {
   padding-bottom: 10px;
 }
 
+.description {
+  grid-column: span 2;
+}
+
 @media (max-width: 1024px) {
   .main {
     gap: 20px;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 855px) {
   .main {
     grid-template-columns: 1fr;
   }
@@ -171,5 +175,11 @@ a:hover {
   .infoRight {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+  .ratings {
+    order: 2;
+  }
+  .description {
+    grid-column: span 1;
   }
 }
