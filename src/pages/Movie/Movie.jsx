@@ -5,6 +5,7 @@ import { getMovie, getStaff } from "../../api/apiMovie";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
 import Header from "../../components/Header/Header";
+import JobPersonList from "../../components/JobPersonList/JobPersonList";
 
 const Movie = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -64,207 +65,124 @@ const Movie = () => {
   return (
     <div className={`${theme === "light" ? styles.dark : styles.light}`}>
       <Header keywords={keywords} setKeywords={setKeywords} />
-      <main className={`${theme === "light" ? styles.dark : styles.light}`}>
-        <main className={styles.main}>
-          <div className={styles.image}>
-            <img src={movie.posterUrlPreview} alt="логан" />
+      <main
+        className={`${styles.main} ${
+          theme === "light" ? styles.dark : styles.light
+        }`}
+      >
+        <div className={styles.image}>
+          <img src={movie.posterUrlPreview} alt="логан" />
+        </div>
+        <div className={styles.info}>
+          <h2 className={styles.title}>
+            {movie.nameRu}
+            <span>{` (${movie.year})`}</span>
+          </h2>
+          <div style={{ paddingTop: "10px" }}>
+            <span className={styles.subtitle}>{movie.nameOriginal}</span>
           </div>
-          <div className={styles.info}>
-            <h2 className={styles.title}>
-              {movie.nameRu}
-              <span>{` (${movie.year})`}</span>
-            </h2>
-            <div style={{ paddingTop: "10px" }}>
-              <span className={styles.subtitle}>{movie.nameOriginal}</span>
+          <p className={styles.desc}>{movie.shortDescription}</p>
+
+          <a
+            href={`https://www.kinopoisk.cx/film/${movie.kinopoiskId}`}
+            className={styles.button}
+          >
+            Смотреть
+          </a>
+
+          {movie.type === "FILM" ? <h3>О фильме</h3> : <h3>О Сериале</h3>}
+
+          <div className={styles.params}>
+            <div>
+              <span>Год производства</span>
+              <a onClick={() => navigateToYear(movie.year)}>{movie.year}</a>
             </div>
-            <p className={styles.desc}>{movie.shortDescription}</p>
 
-            <button className={styles.button}>Смотреть</button>
-
-            <h3>О фильме</h3>
-
-            <div className={styles.params}>
-              <div>
-                <span>Год производства</span>
-                <a onClick={() => navigateToYear(movie.year)}>{movie.year}</a>
-              </div>
-
-              <div>
-                <span>Страна</span>
-                <span>
-                  {movie.countries?.map((item, index, array) => {
-                    return (
-                      <span key={index}>
-                        {item.country}
-                        {index < array.length - 1 && ", "}{" "}
-                      </span>
-                    );
-                  })}
-                </span>
-              </div>
-
-              <div>
-                <span>Жанр</span>
-                <span>
-                  {movie.genres?.map((item, index, array) => {
-                    return (
-                      <a
-                        key={index}
-                        onClick={() => navigateToGenre(item.genre)}
-                      >
-                        {item.genre}
-                        {index < array.length - 1 && ", "}{" "}
-                      </a>
-                    );
-                  })}
-                </span>
-              </div>
-              <div>
-                <span>Режиссер</span>
-                <span>
-                  {staff
-                    .filter((item) => item.professionKey === "DIRECTOR")
-                    .slice(0, 3)
-                    .map((item, index, array) => {
-                      return (
-                        <a
-                          key={index}
-                          onClick={() => navigateToPerson(item.staffId)}
-                        >
-                          {item.nameRu}
-                          {index < array.length - 1 && ", "}{" "}
-                        </a>
-                      );
-                    })}
-                </span>
-              </div>
-              <div>
-                <span>Продюсер</span>
-                <span>
-                  {staff
-                    .filter((item) => item.professionKey === "PRODUCER")
-                    .slice(0, 3)
-                    .map((item, index, array) => {
-                      return (
-                        <a
-                          key={index}
-                          onClick={() => navigateToPerson(item.staffId)}
-                        >
-                          {item.nameRu}
-                          {index < array.length - 1 && ", "}{" "}
-                        </a>
-                      );
-                    })}
-                </span>
-              </div>
-              <div>
-                <span>Оператор</span>
-                <span>
-                  {staff
-                    .filter((item) => item.professionKey === "OPERATOR")
-                    .map((item, index, array) => {
-                      return (
-                        <a
-                          key={index}
-                          onClick={() => navigateToPerson(item.staffId)}
-                        >
-                          {item.nameRu}
-                          {index < array.length - 1 && ", "}{" "}
-                        </a>
-                      );
-                    })}
-                </span>
-              </div>
-              <div>
-                <span>Композитор</span>
-                <span>
-                  {staff
-                    .filter((item) => item.professionKey === "COMPOSER")
-                    .map((item, index, array) => {
-                      return (
-                        <a
-                          key={index}
-                          onClick={() => navigateToPerson(item.staffId)}
-                        >
-                          {item.nameRu}
-                          {index < array.length - 1 && ", "}{" "}
-                        </a>
-                      );
-                    })}
-                </span>
-              </div>
-              <div>
-                <span>Монтаж</span>
-                <span>
-                  {staff
-                    .filter((item) => item.professionKey === "EDITOR")
-                    .map((item, index, array) => {
-                      return (
-                        <a
-                          key={index}
-                          onClick={() => navigateToPerson(item.staffId)}
-                        >
-                          {item.nameRu}
-                          {index < array.length - 1 && ", "}{" "}
-                        </a>
-                      );
-                    })}
-                </span>
-              </div>
-              <div>
-                <span>Возраст</span>
-                <span className={styles.age}>
-                  {movie.ratingAgeLimits?.slice(3, 5)}+
-                </span>
-              </div>
-              <div>
-                <span>Время</span>
-                <span>
-                  {Math.trunc(movie.filmLength / 60)} ч {movie.filmLength % 60}{" "}
-                  мин
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.infoRight}>
-            <div className={styles.ratings}>
-              {movie.ratingImdb ? (
-                <div className={ratingColor(movie.ratingImdb)}>
-                  {movie.ratingImdb} <span>Imdb</span>
-                </div>
-              ) : null}
-              {movie.ratingImdb ? (
-                <span>{movie.ratingImdbVoteCount} оценки</span>
-              ) : null}
-
-              {movie.ratingKinopoisk ? (
-                <div className={ratingColor(movie.ratingKinopoisk)}>
-                  {movie.ratingKinopoisk} <span>Кинопоиск</span>
-                </div>
-              ) : null}
-              {movie.ratingKinopoisk ? (
-                <span>{movie.ratingKinopoiskVoteCount} оценки</span>
-              ) : null}
-            </div>
-            <div className={styles.actors}>
-              <h3 className={styles.actorsTitle}>В главных ролях:</h3>
-              {staff
-                .filter((item) => item.professionKey === "ACTOR")
-                .slice(0, 10)
-                .map((item, index) => {
+            <div>
+              <span>Страна</span>
+              <span>
+                {movie.countries?.map((item, index, array) => {
                   return (
-                    <a
-                      key={index}
-                      className={styles.actor}
-                      onClick={() => navigateToPerson(item.staffId)}
-                    >
-                      {item.nameRu}
+                    <span key={index}>
+                      {item.country}
+                      {index < array.length - 1 && ", "}{" "}
+                    </span>
+                  );
+                })}
+              </span>
+            </div>
+
+            <div>
+              <span>Жанр</span>
+              <span>
+                {movie.genres?.map((item, index, array) => {
+                  return (
+                    <a key={index} onClick={() => navigateToGenre(item.genre)}>
+                      {item.genre}
+                      {index < array.length - 1 && ", "}{" "}
                     </a>
                   );
                 })}
+              </span>
+            </div>
+            <JobPersonList staff={staff} />
+            <div>
+              <span>Возраст</span>
+              <span className={styles.age}>
+                {movie.ratingAgeLimits?.slice(3, 5)}+
+              </span>
+            </div>
+            <div>
+              <span>Время</span>
+              <span>
+                {Math.trunc(movie.filmLength / 60)} ч {movie.filmLength % 60}{" "}
+                мин
+              </span>
             </div>
           </div>
-        </main>
+        </div>
+        <div className={styles.infoRight}>
+          <div className={styles.ratings}>
+            {movie.ratingImdb ? (
+              <div className={ratingColor(movie.ratingImdb)}>
+                {movie.ratingImdb} <span>Imdb</span>
+              </div>
+            ) : null}
+            {movie.ratingImdb ? (
+              <span>{movie.ratingImdbVoteCount} оценки</span>
+            ) : null}
+
+            {movie.ratingKinopoisk ? (
+              <div className={ratingColor(movie.ratingKinopoisk)}>
+                {movie.ratingKinopoisk} <span>Кинопоиск</span>
+              </div>
+            ) : null}
+            {movie.ratingKinopoisk ? (
+              <span>{movie.ratingKinopoiskVoteCount} оценки</span>
+            ) : null}
+          </div>
+
+          <div className={styles.actors}>
+            <h3 className={styles.actorsTitle}>В главных ролях:</h3>
+            {staff
+              .filter((item) => item.professionKey === "ACTOR")
+              .slice(0, 10)
+              .map((item, index) => {
+                return (
+                  <a
+                    key={index}
+                    className={styles.actor}
+                    onClick={() => navigateToPerson(item.staffId)}
+                  >
+                    {item.nameRu}
+                  </a>
+                );
+              })}
+          </div>
+        </div>
+        <div className={styles.description}>
+          <p>{movie.description}</p>
+        </div>
       </main>
     </div>
   );
