@@ -58,6 +58,10 @@ const Movie = () => {
     navigate(`/lists/movies/genre/${genre}`);
   };
 
+  const navigateToСountry = (country) => {
+    navigate(`/lists/movies/country/${country}`);
+  };
+
   const navigateToPerson = (personId) => {
     navigate(`/name/${personId}`);
   };
@@ -103,10 +107,13 @@ const Movie = () => {
               <span>
                 {movie.countries?.map((item, index, array) => {
                   return (
-                    <span key={index}>
+                    <a
+                      key={index}
+                      onClick={() => navigateToСountry(item.country)}
+                    >
                       {item.country}
                       {index < array.length - 1 && ", "}{" "}
-                    </span>
+                    </a>
                   );
                 })}
               </span>

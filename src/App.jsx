@@ -6,6 +6,7 @@ import MoviesYear from "./pages/MoviesYear/MoviesYear";
 import MoviesGenre from "./pages/MoviesGenre/MoviesGenre";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import PersonNamePage from "./pages/PersonNamePage/PersonNamePage";
+import MoviesCountry from "./pages/MoviesCountry/MoviesCountry";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <Route path="/name/:personId" element={<PersonNamePage />} />
         <Route path="/lists/movies/:year" element={<MoviesYear />} />
         <Route path="/lists/movies/genre/:genre" element={<MoviesGenre />} />
+        <Route
+          path="/lists/movies/country/:country"
+          element={<MoviesCountry />}
+        />
       </Routes>
     </ThemeProvider>
   );
