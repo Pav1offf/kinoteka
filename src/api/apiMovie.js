@@ -19,12 +19,28 @@ export const getMovie = async (id = 303) => {
   }
 };
 
+export const getCountryId = async () => {
+  try {
+    const response = await axios.get(`${BASE_API}v2.2/films/filters`, {
+      headers: {
+        "X-API-KEY": API_KEY,
+        "Content-Type": "application/json",
+      },
+      params: {},
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getMoviesFilters = async ({
   order = "RATING",
   type = "ALL",
   yearFrom,
   yearTo,
   genres,
+  countries,
 }) => {
   try {
     const response = await axios.get(`${BASE_API}v2.2/films`, {
@@ -38,6 +54,7 @@ export const getMoviesFilters = async ({
         yearFrom,
         yearTo,
         genres,
+        countries,
       },
     });
     return response.data;
