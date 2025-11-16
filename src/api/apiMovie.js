@@ -41,6 +41,7 @@ export const getMoviesFilters = async ({
   yearTo,
   genres,
   countries,
+  page,
 }) => {
   try {
     const response = await axios.get(`${BASE_API}v2.2/films`, {
@@ -55,6 +56,7 @@ export const getMoviesFilters = async ({
         yearTo,
         genres,
         countries,
+        page,
       },
     });
     return response.data;

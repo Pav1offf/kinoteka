@@ -1,0 +1,48 @@
+.main {
+  width: 100%;
+  padding: 24px;
+  min-height: 100vh;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+}
+
+.dark main {
+  background-color: #17181f;
+}
+
+.light main {
+  background-color: white;
+}
+
+.dark p,
+.dark h1,
+.dark h2,
+.dark h3 {
+  color: white;
+}
+
+.light p,
+.light h1,
+.light h2,
+.light h3 {
+  color: #17181f;
+}
+
+.title {
+  padding-bottom: 20px;
+}
+
+.item,
+.active {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+.active {
+  background-color: blanchedalmond;
+}
