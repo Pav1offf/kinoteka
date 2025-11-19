@@ -1,6 +1,14 @@
 .main {
+  display: flex;
+  margin-top: 88px;
   width: 100%;
   padding: 24px;
+  min-height: 100vh;
+}
+
+.content {
+  width: 100%;
+  margin-left: 0px;
   min-height: 100vh;
 }
 
@@ -22,4 +30,16 @@
 .light h1,
 .light h3 {
   color: #17181f;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    margin-left: -200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-top: 157px;
+  }
 }

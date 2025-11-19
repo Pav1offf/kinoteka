@@ -5,12 +5,14 @@ import MovieList from "../../components/MovieList/MovieList";
 import Header from "../../components/Header/Header";
 import { ThemeContext } from "../../context/ThemeContext";
 import Pagination from "../../components/Pagination/Pagination";
+import SideBar from "../../components/SideBar/SideBar";
 
 const Main = () => {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(10);
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
+  const { handleTouchStart, handleTouchEnd } = useContext(ThemeContext);
 
   const fetchPopularMovie = async () => {
     try {
@@ -29,15 +31,22 @@ const Main = () => {
   }, [currentPage]);
 
   return (
-    <div className={`${theme === "light" ? styles.dark : styles.light}`}>
+    <div
+      className={`${theme === "light" ? styles.dark : styles.light}`}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <Header />
       <main className={styles.main}>
-        <MovieList movies={movies} />
-        <Pagination
-          totalPages={totalPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
+        <SideBar />
+        <div className={styles.content}>
+          <MovieList movies={movies} />
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
       </main>
     </div>
   );

@@ -1,0 +1,61 @@
+.dark {
+  background-color: #17181f;
+}
+
+.light {
+  background-color: white;
+}
+
+.dark p,
+.dark h1,
+.dark h2,
+.dark h3 {
+  color: white;
+}
+
+.light p,
+.light h1,
+.light h2,
+.light h3 {
+  color: #17181f;
+}
+
+.sideBar {
+  position: sticky;
+  top: 100px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 220px; /* Изначально скрыт */
+  padding-right: 24px;
+  transition: 0.5s;
+  z-index: 2;
+}
+
+.sidebarOpen {
+  width: 220px;
+}
+
+.listButton {
+  padding: 8px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+select {
+  padding: 8px;
+  border-radius: 5px;
+}
+
+@media (max-width: 1024px) {
+  .sideBar {
+    transform: translateX(-125%);
+    width: 220px;
+    top: 157px;
+  }
+  .sidebarOpen {
+    transform: translateX(0);
+    width: 220px;
+  }
+}
