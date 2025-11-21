@@ -1,6 +1,5 @@
 .main {
   display: flex;
-  margin-top: 88px;
   width: 100%;
   padding: 24px;
   min-height: 100vh;
@@ -35,11 +34,5 @@
 @media (max-width: 1024px) {
   .content {
     margin-left: -200px;
-  }
-}
-
-@media (max-width: 768px) {
-  .main {
-    margin-top: 157px;
   }
 }

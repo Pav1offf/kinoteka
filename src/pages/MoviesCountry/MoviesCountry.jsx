@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { getCountryId, getMoviesFilters } from "../../api/apiMovie";
+import { getMoviesFilters } from "../../api/apiMovie";
 import styles from "./styles.module.css";
 import MovieList from "../../components/MovieList/MovieList";
 import Header from "../../components/Header/Header";
@@ -7,10 +7,10 @@ import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
+import { countries } from "../../api/countries";
 
 const MoviesCountry = () => {
   const [movies, setMovies] = useState([]);
-  const [countryId, setCountryId] = useState([]);
   const [keywords, setKeywords] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(10);
@@ -19,17 +19,9 @@ const MoviesCountry = () => {
 
   const { theme, toggleTheme } = useContext(ThemeContext);
 
-  const fetchFiltersMovies = async () => {
-    try {
-      const response = await getCountryId();
-      const countryID = response.countries.find(
-        (item) => item.country === country
-      );
-      setCountryId(countryID.id);
-    } catch (error) {
-      console.log(error);
-    }
+  const countryId = countries.find((item) => item.country === country);
 
+  const fetchFiltersMovies = async () => {
     try {
       const response = await getMoviesFilters({
         countries: countryId,

@@ -21,8 +21,8 @@ const MoviesYear = () => {
   const fetchFiltersMovies = async () => {
     try {
       const response = await getMoviesFilters({
-        yearFrom: year,
-        yearTo: year,
+        yearFrom: year.slice(0, 4),
+        yearTo: year.slice(-4),
         page: currentPage,
       });
       setMovies(response.items);

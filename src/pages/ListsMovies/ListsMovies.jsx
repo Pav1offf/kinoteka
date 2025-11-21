@@ -16,7 +16,7 @@ const ListsMovies = () => {
       <Header keywords={keywords} setKeywords={setKeywords} />
       <main className={styles.main}>
         <h1 className={styles.title}>Списки</h1>
-        <nav>
+        <nav className={styles.lists}>
           <ul>
             <li>
               <button
@@ -55,9 +55,9 @@ const ListsMovies = () => {
           </ul>
         </nav>
         <div>
-          {playlist === "Коллекции" ? (
-            <Playlist value={"250 лучших фильмов"} list={"genre"} />
-          ) : null}
+          {/* {playlist === "Коллекции" ? (
+            <Playlist value={"TOP_POPULAR_ALL"} list={"genre"} />
+          ) : null} */}
 
           {playlist === "Жанры"
             ? genres.map((item, index) => {
@@ -68,16 +68,29 @@ const ListsMovies = () => {
             : null}
 
           {playlist === "Годы"
-            ? Array.from({ length: 10 }).map((_, index) => {
+            ? Array.from({ length: 6 }).map((_, index) => {
                 return (
                   <Playlist value={2025 - index} key={index} list={"year"} />
+                );
+              })
+            : null}
+          {playlist === "Годы"
+            ? Array.from({ length: 15 }).map((_, index) => {
+                return (
+                  <Playlist
+                    value={`${2010 - index * 10}-${2020 - index * 10 - 1}`}
+                    key={index}
+                    list={"year"}
+                  />
                 );
               })
             : null}
 
           {playlist === "Страны"
             ? countries.map((item, index) => {
-                return <Playlist value={item} key={index} list={"country"} />;
+                return (
+                  <Playlist value={item.country} key={index} list={"country"} />
+                );
               })
             : null}
         </div>
