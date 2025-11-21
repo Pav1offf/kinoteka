@@ -1,6 +1,5 @@
 .main {
   width: 100%;
-  margin-top: 88px;
   padding: 24px;
   min-height: 100vh;
 }
@@ -34,6 +33,10 @@ li {
 
 .title {
   padding-bottom: 20px;
+}
+
+.lists {
+  margin-bottom: 20px;
 }
 
 .item,
