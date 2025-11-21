@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { getMovies } from "../../api/apiMovie";
+import { getMoviesFilters } from "../../api/apiMovie";
 import styles from "./styles.module.css";
 import MovieList from "../../components/MovieList/MovieList";
 import Header from "../../components/Header/Header";
@@ -14,10 +14,18 @@ const Main = () => {
   const { theme } = useContext(ThemeContext);
   const { handleTouchStart, handleTouchEnd } = useContext(ThemeContext);
 
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
+
   const fetchPopularMovie = async () => {
     try {
-      const response = await getMovies({
+      const response = await getMoviesFilters({
         page: currentPage,
+        countries: selectedCountry,
+        genres: selectedGenre,
+        yearFrom: selectedYear.slice(0, 4),
+        yearTo: selectedYear.slice(-4),
       });
       setMovies(response.items);
       // setTotalPages(response.totalPages);
@@ -28,7 +36,7 @@ const Main = () => {
 
   useEffect(() => {
     fetchPopularMovie(currentPage);
-  }, [currentPage]);
+  }, [currentPage, selectedGenre, selectedCountry, selectedYear]);
 
   return (
     <div
@@ -38,7 +46,14 @@ const Main = () => {
     >
       <Header />
       <main className={styles.main}>
-        <SideBar />
+        <SideBar
+          selectedCountry={selectedCountry}
+          setSelectedCountry={setSelectedCountry}
+          selectedGenre={selectedGenre}
+          setSelectedGenre={setSelectedGenre}
+          selectedYear={selectedYear}
+          setSelectedYear={setSelectedYear}
+        />
         <div className={styles.content}>
           <MovieList movies={movies} />
           <Pagination

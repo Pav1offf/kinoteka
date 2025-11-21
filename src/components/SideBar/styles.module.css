@@ -22,13 +22,14 @@
 
 .sideBar {
   position: sticky;
-  top: 100px;
+  top: 10px;
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 220px; /* Изначально скрыт */
+  width: 220px;
   padding-right: 24px;
+  margin-right: 10px;
   transition: 0.5s;
   z-index: 2;
 }
