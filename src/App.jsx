@@ -8,6 +8,7 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import PersonNamePage from "./pages/PersonNamePage/PersonNamePage";
 import MoviesCountry from "./pages/MoviesCountry/MoviesCountry";
 import ListsMovies from "./pages/ListsMovies/ListsMovies";
+import MoviesСollection from "./pages/MoviesСollection/MoviesСollection";
 
 function App() {
   return (
@@ -20,6 +21,10 @@ function App() {
         <Route path="/lists/movies" element={<ListsMovies />} />
         <Route path="/lists/movies/year/:year" element={<MoviesYear />} />
         <Route path="/lists/movies/genre/:genre" element={<MoviesGenre />} />
+        <Route
+          path="/lists/movies/collection/:collection"
+          element={<MoviesСollection />}
+        />
         <Route
           path="/lists/movies/country/:country"
           element={<MoviesCountry />}
