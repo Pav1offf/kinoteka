@@ -8,6 +8,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import SideBar from "../../components/SideBar/SideBar";
 
 const Main = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(10);
@@ -22,6 +23,7 @@ const Main = () => {
 
   const fetchPopularMovie = async () => {
     try {
+      setIsLoading(true);
       const response = await getMoviesFilters({
         page: currentPage,
         countries: selectedCountry,
@@ -33,6 +35,7 @@ const Main = () => {
         ratingTo: range.slice(-1),
       });
       setMovies(response.items);
+      setIsLoading(false);
       // setTotalPages(response.totalPages);
     } catch (error) {
       console.log(error);
@@ -71,7 +74,7 @@ const Main = () => {
           setRange={setRange}
         />
         <div className={styles.content}>
-          <MovieList movies={movies} />
+          <MovieList movies={movies} isLoading={isLoading} />
           <Pagination
             totalPages={totalPages}
             currentPage={currentPage}

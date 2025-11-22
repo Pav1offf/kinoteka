@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 
 const MoviesYear = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [keywords, setKeywords] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,6 +21,7 @@ const MoviesYear = () => {
 
   const fetchFiltersMovies = async () => {
     try {
+      setIsLoading(true);
       const response = await getMoviesFilters({
         yearFrom: year.slice(0, 4),
         yearTo: year.slice(-4),
@@ -27,6 +29,7 @@ const MoviesYear = () => {
       });
       setMovies(response.items);
       setTotalPages(response.totalPages);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +44,7 @@ const MoviesYear = () => {
       <Header keywords={keywords} setKeywords={setKeywords} />
       <main className={styles.main}>
         <h1 className={styles.title}>Лучшие фильмы {year} года</h1>
-        <MovieList movies={movies} />
+        <MovieList movies={movies} isLoading={isLoading} />
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}

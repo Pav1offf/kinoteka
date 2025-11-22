@@ -10,6 +10,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { countries } from "../../api/countries";
 
 const MoviesCountry = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [keywords, setKeywords] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,19 +24,21 @@ const MoviesCountry = () => {
 
   const fetchFiltersMovies = async () => {
     try {
+      setIsLoading(true);
       const response = await getMoviesFilters({
-        countries: countryId,
+        countries: countryId.id,
         page: currentPage,
       });
       setTotalPages(response.totalPages);
       setMovies(response.items);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchFiltersMovies(countryId);
+    fetchFiltersMovies(countryId.id);
   }, [countryId, currentPage]);
 
   return (
@@ -43,7 +46,7 @@ const MoviesCountry = () => {
       <Header keywords={keywords} setKeywords={setKeywords} />
       <main className={styles.main}>
         <h1 className={styles.title}>Лучшие фильмы в стране {country}</h1>
-        <MovieList movies={movies} />
+        <MovieList movies={movies} isLoading={isLoading} />
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}

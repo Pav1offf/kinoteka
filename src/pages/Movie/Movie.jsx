@@ -51,7 +51,7 @@ const Movie = () => {
   const navigate = useNavigate();
 
   const navigateToYear = () => {
-    navigate(`/lists/movies/${movie.year}`);
+    navigate(`/lists/movies/year/${movie.year}`);
   };
 
   const navigateToGenre = (genre) => {
@@ -80,7 +80,9 @@ const Movie = () => {
         <div className={styles.info}>
           <h2 className={styles.title}>
             {movie.nameRu ? movie.nameRu : movie.nameOriginal}
-            <span>{` (${movie.year})`}</span>
+            <span>{` (${movie.year}${
+              movie.endYear ? -movie.endYear : ""
+            })`}</span>
           </h2>
           <div style={{ paddingTop: "10px" }}>
             <span className={styles.subtitle}>{movie.nameOriginal}</span>
@@ -145,10 +147,14 @@ const Movie = () => {
             </div>
             <div>
               <span>Время</span>
-              <span>
-                {Math.trunc(movie.filmLength / 60)} ч {movie.filmLength % 60}{" "}
-                мин
-              </span>
+              {movie.filmLength ? (
+                <span>
+                  {Math.trunc(movie.filmLength / 60)} ч {movie.filmLength % 60}{" "}
+                  мин
+                </span>
+              ) : (
+                <span>{"—"}</span>
+              )}
             </div>
           </div>
         </div>
