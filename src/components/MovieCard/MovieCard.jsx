@@ -24,7 +24,9 @@ const MovieCard = ({ movie }) => {
         </div>
       </div>
       <div className={styles.info}>
-        <h3 className={styles.title}>{movie.nameRu}</h3>
+        <h3 className={styles.title}>
+          {movie.nameRu ? movie.nameRu : movie.nameOriginal}
+        </h3>
         <p className={styles.year}>{movie.year}</p>
       </div>
     </div>

@@ -4,6 +4,8 @@ import { genres } from "../../api/genres";
 import { countries } from "../../api/countries";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
 
 const SideBar = ({
   selectedCountry,
@@ -12,6 +14,10 @@ const SideBar = ({
   setSelectedGenre,
   selectedYear,
   setSelectedYear,
+  selectedSort,
+  setSelectedSort,
+  range,
+  setRange,
 }) => {
   const { theme } = useContext(ThemeContext);
   const { isOpen } = useContext(ThemeContext);
@@ -31,6 +37,17 @@ const SideBar = ({
       <button className={styles.listButton} onClick={() => navigateToLists()}>
         Списки
       </button>
+
+      <select
+        name="sorting"
+        value={selectedSort}
+        onChange={(e) => setSelectedSort(e.target.value)}
+      >
+        <option value={"RATING"}>{"По рейтингу"}</option>
+        <option value={"NUM_VOTE"}>{"По количеству оценок"}</option>
+        <option value={"YEAR"}>{"По дате"}</option>
+      </select>
+
       <select
         name="countries"
         value={selectedCountry}
@@ -80,8 +97,13 @@ const SideBar = ({
           );
         })}
       </select>
-
-      <p>{selectedYear}</p>
+      {/* <p>Рейтинг</p> */}
+      {/* <RangeSlider
+        min={1}
+        max={10}
+        value={range}
+        onInput={setRange} // Используйте onInput для обновления в реальном времени
+      /> */}
     </div>
   );
 };

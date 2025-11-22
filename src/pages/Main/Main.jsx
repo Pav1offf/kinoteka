@@ -16,7 +16,9 @@ const Main = () => {
 
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
-  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedYear, setSelectedYear] = useState("10002025");
+  const [selectedSort, setSelectedSort] = useState("RATING");
+  const [range, setRange] = useState([1, 10]);
 
   const fetchPopularMovie = async () => {
     try {
@@ -24,8 +26,11 @@ const Main = () => {
         page: currentPage,
         countries: selectedCountry,
         genres: selectedGenre,
+        order: selectedSort,
         yearFrom: selectedYear.slice(0, 4),
         yearTo: selectedYear.slice(-4),
+        ratingFrom: range.slice(0, 1),
+        ratingTo: range.slice(-1),
       });
       setMovies(response.items);
       // setTotalPages(response.totalPages);
@@ -36,7 +41,14 @@ const Main = () => {
 
   useEffect(() => {
     fetchPopularMovie(currentPage);
-  }, [currentPage, selectedGenre, selectedCountry, selectedYear]);
+  }, [
+    currentPage,
+    selectedGenre,
+    selectedCountry,
+    selectedYear,
+    selectedSort,
+    range,
+  ]);
 
   return (
     <div
@@ -53,6 +65,10 @@ const Main = () => {
           setSelectedGenre={setSelectedGenre}
           selectedYear={selectedYear}
           setSelectedYear={setSelectedYear}
+          selectedSort={selectedSort}
+          setSelectedSort={setSelectedSort}
+          range={range}
+          setRange={setRange}
         />
         <div className={styles.content}>
           <MovieList movies={movies} />

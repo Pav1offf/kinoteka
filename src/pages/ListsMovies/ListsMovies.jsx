@@ -5,6 +5,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import Playlist from "../../components/Playlist/Playlist";
 import { genres } from "../../api/genres";
 import { countries } from "../../api/countries";
+import { collections } from "../../api/collections";
 
 const ListsMovies = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -55,14 +56,28 @@ const ListsMovies = () => {
           </ul>
         </nav>
         <div>
-          {/* {playlist === "Коллекции" ? (
-            <Playlist value={"TOP_POPULAR_ALL"} list={"genre"} />
-          ) : null} */}
+          {playlist === "Коллекции"
+            ? collections.map((item, index) => {
+                return (
+                  <Playlist
+                    value={item.link}
+                    title={item.title}
+                    key={index}
+                    list={"collection"}
+                  />
+                );
+              })
+            : null}
 
           {playlist === "Жанры"
             ? genres.map((item, index) => {
                 return (
-                  <Playlist value={item.genre} key={index} list={"genre"} />
+                  <Playlist
+                    value={item.genre}
+                    title={item.title}
+                    key={index}
+                    list={"genre"}
+                  />
                 );
               })
             : null}
@@ -70,7 +85,12 @@ const ListsMovies = () => {
           {playlist === "Годы"
             ? Array.from({ length: 6 }).map((_, index) => {
                 return (
-                  <Playlist value={2025 - index} key={index} list={"year"} />
+                  <Playlist
+                    value={2025 - index}
+                    title={2025 - index}
+                    key={index}
+                    list={"year"}
+                  />
                 );
               })
             : null}
@@ -79,6 +99,7 @@ const ListsMovies = () => {
                 return (
                   <Playlist
                     value={`${2010 - index * 10}-${2020 - index * 10 - 1}`}
+                    title={`${2010 - index * 10}-${2020 - index * 10 - 1}`}
                     key={index}
                     list={"year"}
                   />
@@ -89,7 +110,12 @@ const ListsMovies = () => {
           {playlist === "Страны"
             ? countries.map((item, index) => {
                 return (
-                  <Playlist value={item.country} key={index} list={"country"} />
+                  <Playlist
+                    value={item.country}
+                    title={item.country}
+                    key={index}
+                    list={"country"}
+                  />
                 );
               })
             : null}
