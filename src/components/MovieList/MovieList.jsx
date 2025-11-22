@@ -1,12 +1,17 @@
 import MovieCard from "../MovieCard/MovieCard";
+import Skeleton from "../Skeleton/Skeleton";
 import styles from "./styles.module.css";
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, isLoading }) => {
   return (
     <ul className={styles.list}>
-      {movies.map((movie, index) => {
-        return <MovieCard key={index} movie={movie} />;
-      })}
+      {!isLoading ? (
+        movies.map((movie, index) => {
+          return <MovieCard key={index} movie={movie} />;
+        })
+      ) : (
+        <Skeleton />
+      )}
     </ul>
   );
 };

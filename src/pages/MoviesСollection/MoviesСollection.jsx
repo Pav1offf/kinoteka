@@ -9,6 +9,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { collections } from "../../api/collections";
 
 const MoviesСollection = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [keywords, setKeywords] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,12 +22,14 @@ const MoviesСollection = () => {
 
   const fetchFiltersMovies = async () => {
     try {
+      setIsLoading(true);
       const response = await getMovies({
         page: currentPage,
         type: collectionId.link,
       });
       setTotalPages(response.totalPages);
       setMovies(response.items);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +44,7 @@ const MoviesСollection = () => {
       <Header keywords={keywords} setKeywords={setKeywords} />
       <main className={styles.main}>
         <h1 className={styles.title}>Коллекция {collectionId.title}</h1>
-        <MovieList movies={movies} />
+        <MovieList movies={movies} isLoading={isLoading} />
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
