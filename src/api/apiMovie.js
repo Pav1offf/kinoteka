@@ -37,11 +37,13 @@ export const getCountryId = async () => {
 export const getMoviesFilters = async ({
   order = "RATING",
   type = "ALL",
-  yearFrom,
-  yearTo,
+  yearFrom = 1000,
+  yearTo = 2025,
   genres,
   countries,
   page,
+  ratingFrom,
+  ratingTo,
 }) => {
   try {
     const response = await axios.get(`${BASE_API}v2.2/films`, {
@@ -57,6 +59,8 @@ export const getMoviesFilters = async ({
         genres,
         countries,
         page,
+        ratingFrom,
+        ratingTo,
       },
     });
     return response.data;

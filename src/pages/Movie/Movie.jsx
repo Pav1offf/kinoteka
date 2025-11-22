@@ -75,11 +75,11 @@ const Movie = () => {
         }`}
       >
         <div className={styles.image}>
-          <img src={movie.posterUrlPreview} alt="логан" />
+          <img src={movie.posterUrlPreview} alt="постер" />
         </div>
         <div className={styles.info}>
           <h2 className={styles.title}>
-            {movie.nameRu}
+            {movie.nameRu ? movie.nameRu : movie.nameOriginal}
             <span>{` (${movie.year})`}</span>
           </h2>
           <div style={{ paddingTop: "10px" }}>
@@ -134,10 +134,14 @@ const Movie = () => {
             </div>
             <JobPersonList staff={staff} />
             <div>
-              <span>Возраст</span>
-              <span className={styles.age}>
-                {movie.ratingAgeLimits?.slice(3, 5)}+
-              </span>
+              {movie.ratingAgeLimits ? (
+                <>
+                  <span>Возраст</span>
+                  <span className={styles.age}>
+                    {movie.ratingAgeLimits?.slice(3, 5)}+
+                  </span>{" "}
+                </>
+              ) : null}
             </div>
             <div>
               <span>Время</span>
