@@ -10,6 +10,7 @@ import { genres } from "../../api/genres";
 import Pagination from "../../components/Pagination/Pagination";
 
 const MoviesGenre = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [movies, setMovies] = useState([]);
   const [keywords, setKeywords] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,12 +24,14 @@ const MoviesGenre = () => {
 
   const fetchFiltersMovies = async () => {
     try {
+      setIsLoading(true);
       const response = await getMoviesFilters({
         genres: genreId.id,
         page: currentPage,
       });
       setTotalPages(response.totalPages);
       setMovies(response.items);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +46,7 @@ const MoviesGenre = () => {
       <Header keywords={keywords} setKeywords={setKeywords} />
       <main className={styles.main}>
         <h1 className={styles.title}>Лучшие фильмы в жанре {genre}</h1>
-        <MovieList movies={movies} />
+        <MovieList movies={movies} isLoading={isLoading} />
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
