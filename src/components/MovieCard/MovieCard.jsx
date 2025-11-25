@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Rating from "../Rating/Rating";
 import styles from "./styles.module.css";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, type }) => {
   const navigate = useNavigate();
 
   const navigateTo = (movie) => {
@@ -10,7 +10,10 @@ const MovieCard = ({ movie }) => {
   };
 
   return (
-    <div onClick={() => navigateTo(movie)} className={styles.card}>
+    <div
+      onClick={() => navigateTo(movie)}
+      className={type === "list" ? styles.card : styles[type]}
+    >
       <div className={styles.image}>
         <img src={movie.posterUrlPreview} alt="banner" />
         <div className={styles.ratings}>

@@ -70,8 +70,41 @@ const PersonNamePage = () => {
               </div>
 
               <div>
+                <span>Дата рождения</span>
+                <span>{person.birthday}</span>
+              </div>
+
+              <div>
                 <span>Место рождения</span>
                 <span>{person.birthplace}</span>
+              </div>
+
+              <div>
+                <span>Супруга</span>
+                <span className={styles.spouses}>
+                  {person.spouses?.map((item, index) => {
+                    return (
+                      <>
+                        <a key={index}>
+                          {`${item.name} ${item.divorcedReason}`}
+                        </a>
+                        <span>{item.children} детей</span>
+                      </>
+                    );
+                  })}
+                </span>
+              </div>
+
+              <div>
+                <span>Всего фильмов</span>
+                <span>
+                  {
+                    person.films?.filter(
+                      (obj, index, self) =>
+                        index === self.findIndex((t) => t.filmId === obj.filmId)
+                    ).length
+                  }
+                </span>
               </div>
             </div>
           </div>
@@ -79,7 +112,12 @@ const PersonNamePage = () => {
             <div className={styles.actors}>
               <h3 className={styles.actorsTitle}>Лучшие фильмы</h3>
               {person.films
-                ?.filter((item) => item.rating >= 8)
+                ?.filter(
+                  (obj, index, self) =>
+                    index === self.findIndex((t) => t.filmId === obj.filmId)
+                )
+                .filter((item) => item.rating >= 7)
+                .sort((a, b) => b.rating - a.rating)
                 .slice(0, 10)
                 .map((item, index) => {
                   return (
