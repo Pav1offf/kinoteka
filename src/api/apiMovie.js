@@ -139,3 +139,36 @@ export const getStaff = async (filmId = 301) => {
     console.log(error);
   }
 };
+
+export const getSequels = async (id = 66539) => {
+  try {
+    const response = await axios.get(
+      `${BASE_API}v2.1/films/${id}/sequels_and_prequels`,
+      {
+        headers: {
+          "X-API-KEY": API_KEY,
+          "Content-Type": "application/json",
+        },
+        params: {},
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getSimilars = async (id = 66539) => {
+  try {
+    const response = await axios.get(`${BASE_API}v2.2/films/${id}/similars`, {
+      headers: {
+        "X-API-KEY": API_KEY,
+        "Content-Type": "application/json",
+      },
+      params: {},
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

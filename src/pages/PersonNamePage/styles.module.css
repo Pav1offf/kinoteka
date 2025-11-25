@@ -158,6 +158,11 @@ a:hover {
   padding-bottom: 10px;
 }
 
+.spouses {
+  display: flex;
+  flex-direction: column;
+}
+
 @media (max-width: 1024px) {
   .main {
     gap: 20px;
