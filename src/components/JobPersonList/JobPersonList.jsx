@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import JobPerson from "../JobPerson/JobPerson";
 
-const JobPersonList = ({ staff }) => {
+const JobPersonList = ({ staff, handleMouseEnter, setIsOpen }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const jobs = [
@@ -39,7 +39,15 @@ const JobPersonList = ({ staff }) => {
   return (
     <>
       {jobs.map((job, index) => {
-        return <JobPerson staff={staff} key={index} job={job} />;
+        return (
+          <JobPerson
+            staff={staff}
+            key={index}
+            job={job}
+            handleMouseEnter={handleMouseEnter}
+            setIsOpen={setIsOpen}
+          />
+        );
       })}
     </>
   );

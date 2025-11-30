@@ -158,6 +158,22 @@ a:hover {
   padding-bottom: 10px;
 }
 
+.actorInner {
+  display: flex;
+  gap: 10px;
+}
+
+.actorPhoto {
+  display: none;
+  width: 64px;
+  height: auto;
+}
+
+.actorPhotoImg {
+  width: 100%;
+  height: auto;
+}
+
 .actor {
   padding-bottom: 10px;
 }
@@ -173,6 +189,9 @@ a:hover {
 @media (max-width: 1024px) {
   .top {
     gap: 20px;
+  }
+  .actorPhoto {
+    display: block;
   }
 }
 @media (max-width: 855px) {

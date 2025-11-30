@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
-const JobPerson = ({ staff, job }) => {
+const JobPerson = ({ staff, job, handleMouseEnter, setIsOpen }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const navigate = useNavigate();
@@ -31,7 +31,12 @@ const JobPerson = ({ staff, job }) => {
               .slice(0, 3)
               .map((item, index, array) => {
                 return (
-                  <a key={index} onClick={() => navigateToPerson(item.staffId)}>
+                  <a
+                    key={index}
+                    onClick={() => navigateToPerson(item.staffId)}
+                    onMouseEnter={(e) => handleMouseEnter(e, item)}
+                    onMouseLeave={() => setIsOpen(false)}
+                  >
                     {item.nameRu}
                     {index < array.length - 1 && ", "}
                   </a>
