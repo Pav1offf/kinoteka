@@ -1,0 +1,30 @@
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: auto;
+  z-index: 1000;
+}
+
+.popupContent {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark .popupContent {
+  background-color: #212830;
+}
+
+.personPhoto {
+  width: 112px;
+  height: 168px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}

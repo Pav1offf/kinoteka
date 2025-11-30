@@ -12,16 +12,27 @@ import { useDebounce } from "../../helpers/hooks/useDebounce";
 import Header from "../../components/Header/Header";
 import JobPersonList from "../../components/JobPersonList/JobPersonList";
 import MovieList from "../../components/MovieList/MovieList";
+import PopupPerson from "../../components/PopupPerson/PopupPerson";
 
 const Movie = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { id } = useParams();
   const [movie, setMovie] = useState([]);
+  const [person, setPerson] = useState([]);
   const [staff, setStaff] = useState([]);
   const [sequels, setSequels] = useState([]);
   const [similars, setSimilars] = useState([]);
   const [keywords, setKeywords] = useState("");
   const debouncedKeywords = useDebounce(keywords, 1500);
+
+  const [isOpen, setIsOpen] = useState(null);
+  const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
+
+  const handleMouseEnter = (e, item) => {
+    setCoordinates({ x: e.clientX, y: e.clientY });
+    setIsOpen(true);
+    setPerson(item);
+  };
 
   function ratingColor(rating) {
     if (rating >= 7) {
@@ -166,7 +177,11 @@ const Movie = () => {
                   })}
                 </span>
               </div>
-              <JobPersonList staff={staff} />
+              <JobPersonList
+                staff={staff}
+                handleMouseEnter={handleMouseEnter}
+                setIsOpen={setIsOpen}
+              />
               <div>
                 {movie.ratingAgeLimits ? (
                   <>
@@ -218,14 +233,26 @@ const Movie = () => {
                 .slice(0, 10)
                 .map((item, index) => {
                   return (
-                    <a
-                      key={index}
-                      className={styles.actor}
-                      onClick={() => navigateToPerson(item.staffId)}
-                    >
-                      {item.nameRu}
-                      {` (${item.description})`}
-                    </a>
+                    <div className={styles.actorInner}>
+                      <div className={styles.actorPhoto}>
+                        <img
+                          className={styles.actorPhotoImg}
+                          src={item.posterUrl}
+                          alt=""
+                        />
+                      </div>
+
+                      <a
+                        key={index}
+                        className={styles.actor}
+                        onClick={() => navigateToPerson(item.staffId)}
+                        onMouseEnter={(e) => handleMouseEnter(e, item)}
+                        onMouseLeave={() => setIsOpen(false)}
+                      >
+                        {item.nameRu}
+                        {` (${item.description})`}
+                      </a>
+                    </div>
                   );
                 })}
             </div>
@@ -236,17 +263,22 @@ const Movie = () => {
           <p>{movie.description}</p>
         </div>
 
-        <div className={styles.sequels}>
-          <h3 className={styles.sequelsTitle}>
-            Сиквелы, приквелы и ремейки{" >"}
-          </h3>
-          <MovieList movies={sequels} type="scrollbar" />
-        </div>
+        {sequels ? (
+          <div className={styles.sequels}>
+            <h3 className={styles.sequelsTitle}>
+              Сиквелы, приквелы и ремейки{" >"}
+            </h3>
+            <MovieList movies={sequels} type="scrollbar" />
+          </div>
+        ) : null}
+        {similars ? (
+          <div className={styles.sequels}>
+            <h3 className={styles.sequelsTitle}>Похожие фильмы{" >"}</h3>
+            <MovieList movies={similars} type="scrollbar" />
+          </div>
+        ) : null}
 
-        <div className={styles.sequels}>
-          <h3 className={styles.sequelsTitle}>Похожие фильмы{" >"}</h3>
-          <MovieList movies={similars} type="scrollbar" />
-        </div>
+        {isOpen && <PopupPerson person={person} coordinates={coordinates} />}
       </main>
     </div>
   );
