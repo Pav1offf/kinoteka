@@ -271,7 +271,7 @@ const Movie = () => {
             <MovieList movies={sequels} type="scrollbar" />
           </div>
         ) : null}
-        {similars ? (
+        {similars.length ? (
           <div className={styles.sequels}>
             <h3 className={styles.sequelsTitle}>Похожие фильмы{" >"}</h3>
             <MovieList movies={similars} type="scrollbar" />
