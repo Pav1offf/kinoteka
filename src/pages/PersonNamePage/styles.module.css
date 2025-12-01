@@ -1,11 +1,13 @@
 .main {
+  padding: 24px;
+}
+
+.top {
   display: grid;
   grid-template-columns: minmax(200px, 300px) 1fr 200px;
   /* grid-template-columns: repeat(auto-fill, minmax(300px, 500),minmax(300px, 500), 1fr); */
   gap: 50px;
   width: 100%;
-  padding: 24px;
-  min-height: 100vh;
 }
 
 .dark main {
@@ -20,6 +22,7 @@
 .dark a,
 .dark span,
 .dark h1,
+.dark li,
 .dark h2,
 .dark h3 {
   color: white;
@@ -29,6 +32,7 @@
 .light a,
 .light span,
 .light h1,
+.light li,
 .light h2,
 .light h3 {
   color: #17181f;
@@ -163,14 +167,89 @@ a:hover {
   flex-direction: column;
 }
 
+.facts {
+  padding-top: 20px;
+  width: 70%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem {
+  position: relative;
+  padding: 20px;
+
+  border-top: 1px solid rgba(125, 124, 124, 0.1);
+}
+
+.listItem::before {
+  position: absolute;
+  top: 21px;
+  left: 0;
+  display: block;
+  width: 8px;
+  height: 8px;
+  content: "";
+  border-radius: 50%;
+  background-color: rgba(125, 124, 124, 0.4);
+}
+
+.listFilms {
+  display: flex;
+  flex-direction: column;
+}
+
+.personFilms {
+  padding-top: 20px;
+  width: 70%;
+}
+
+.personFilm {
+  display: flex;
+  padding: 20px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  border: 1px solid #fff;
+  border-radius: 10px;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  padding: 25px;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #979797;
+}
+
+.btn:hover {
+  opacity: 0.6;
+}
+
+.personFilm:hover {
+  background-color: rgba(125, 124, 124, 0.4);
+}
+
+.btnActive {
+  border-bottom: 3px solid #f50;
+}
+
 @media (max-width: 1024px) {
-  .main {
+  .top {
     gap: 20px;
   }
 }
 @media (max-width: 768px) {
-  .main {
+  .top {
     grid-template-columns: 1fr;
+  }
+  .facts {
+    width: 100%;
+  }
+
+  .personFilms {
+    width: 100%;
   }
 
   .infoRight {
