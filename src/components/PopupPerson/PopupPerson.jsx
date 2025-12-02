@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import styles from "./styles.module.css";
 import { ThemeContext } from "../../context/ThemeContext";
 
 const PopupPerson = ({ person, coordinates }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
     <div
@@ -26,4 +26,4 @@ const PopupPerson = ({ person, coordinates }) => {
   );
 };
 
-export default PopupPerson;
+export default memo(PopupPerson);

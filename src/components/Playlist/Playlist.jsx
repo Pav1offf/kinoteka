@@ -10,8 +10,8 @@ const Playlist = ({ value, list, title }) => {
 
   return (
     <a className={styles.link} onClick={() => navigateToGenre(value)}>
-      <div>
-        <img src="/250top.png" alt="250top" width={84} height={84} />
+      <div className={styles.image}>
+        <img src="/250top.png" alt="250top" />
       </div>
       <div>
         <h2>{title}</h2>

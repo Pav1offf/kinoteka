@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 
 const ButtonUp = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,4 +37,4 @@ const ButtonUp = () => {
   );
 };
 
-export default ButtonUp;
+export default memo(ButtonUp);

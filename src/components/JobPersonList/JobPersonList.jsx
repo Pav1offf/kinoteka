@@ -1,10 +1,8 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import JobPerson from "../JobPerson/JobPerson";
 
 const JobPersonList = ({ staff, handleMouseEnter, setIsOpen }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-
   const jobs = [
     {
       Key: "DIRECTOR",
@@ -53,4 +51,4 @@ const JobPersonList = ({ staff, handleMouseEnter, setIsOpen }) => {
   );
 };
 
-export default JobPersonList;
+export default memo(JobPersonList);
