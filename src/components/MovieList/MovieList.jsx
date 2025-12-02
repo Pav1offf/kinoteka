@@ -1,3 +1,4 @@
+import { memo } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import Skeleton from "../Skeleton/Skeleton";
 import styles from "./styles.module.css";
@@ -16,4 +17,4 @@ const MovieList = ({ movies, isLoading, type = "list" }) => {
   );
 };
 
-export default MovieList;
+export default memo(MovieList);

@@ -7,7 +7,7 @@ import Header from "../../components/Header/Header";
 import ButtonUp from "../../components/ButtonUp/ButtonUp";
 
 const PersonNamePage = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const { personId } = useParams();
   const [person, setPerson] = useState([]);
   const [profession, setProfession] = useState("ACTOR");
@@ -89,12 +89,10 @@ const PersonNamePage = () => {
                   <span className={styles.spouses}>
                     {person.spouses?.map((item, index) => {
                       return (
-                        <>
-                          <a key={index}>
-                            {`${item.name} ${item.divorcedReason}`}
-                          </a>
+                        <a key={index}>
+                          {`${item.name} ${item.divorcedReason}`}
                           <span>{item.children} детей</span>
-                        </>
+                        </a>
                       );
                     })}
                   </span>

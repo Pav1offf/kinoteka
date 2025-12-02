@@ -1,5 +1,5 @@
 import styles from "./styles.module.css";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import {
   getMovie,
@@ -16,7 +16,7 @@ import PopupPerson from "../../components/PopupPerson/PopupPerson";
 import ButtonUp from "../../components/ButtonUp/ButtonUp";
 
 const Movie = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const { id } = useParams();
   const [movie, setMovie] = useState([]);
   const [person, setPerson] = useState([]);
@@ -29,11 +29,11 @@ const Movie = () => {
   const [isOpen, setIsOpen] = useState(null);
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
 
-  const handleMouseEnter = (e, item) => {
+  const handleMouseEnter = useCallback((e, item) => {
     setCoordinates({ x: e.clientX, y: e.clientY });
     setIsOpen(true);
     setPerson(item);
-  };
+  }, []);
 
   function ratingColor(rating) {
     if (rating >= 7) {
@@ -234,7 +234,7 @@ const Movie = () => {
                 .slice(0, 10)
                 .map((item, index) => {
                   return (
-                    <div className={styles.actorInner}>
+                    <div className={styles.actorInner} key={index}>
                       <div className={styles.actorPhoto}>
                         <img
                           className={styles.actorPhotoImg}

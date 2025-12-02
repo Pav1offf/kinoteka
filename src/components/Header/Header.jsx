@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { themeIcons } from "../../assets";
 import Search from "../Search/Search";
 import styles from "./styles.module.css";
@@ -34,4 +34,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
