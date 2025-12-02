@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import styles from "./styles.module.css";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
 const JobPerson = ({ staff, job, handleMouseEnter, setIsOpen }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   const navigate = useNavigate();
   const navigateToPerson = (personId) => {
@@ -48,4 +48,4 @@ const JobPerson = ({ staff, job, handleMouseEnter, setIsOpen }) => {
   );
 };
 
-export default JobPerson;
+export default memo(JobPerson);

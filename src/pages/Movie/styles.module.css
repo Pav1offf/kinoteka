@@ -161,17 +161,20 @@ a:hover {
 .actorInner {
   display: flex;
   gap: 10px;
+  padding-bottom: 10px;
 }
 
 .actorPhoto {
   display: none;
-  width: 64px;
-  height: auto;
+  max-width: 64px;
+  max-height: 96px;
+  min-width: 64px;
+  min-height: 96px;
 }
 
 .actorPhotoImg {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .actor {
