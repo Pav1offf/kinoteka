@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
+import ButtonUp from "../../components/ButtonUp/ButtonUp";
 
 const SearchPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,6 +45,8 @@ const SearchPage = () => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
+
+        <ButtonUp />
       </main>
     </div>
   );

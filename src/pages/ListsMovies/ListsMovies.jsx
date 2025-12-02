@@ -6,6 +6,7 @@ import Playlist from "../../components/Playlist/Playlist";
 import { genres } from "../../api/genres";
 import { countries } from "../../api/countries";
 import { collections } from "../../api/collections";
+import ButtonUp from "../../components/ButtonUp/ButtonUp";
 
 const ListsMovies = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -120,6 +121,7 @@ const ListsMovies = () => {
               })
             : null}
         </div>
+        <ButtonUp />
       </main>
     </div>
   );
