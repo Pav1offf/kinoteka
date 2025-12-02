@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import { ThemeContext } from "../../context/ThemeContext";
 import Pagination from "../../components/Pagination/Pagination";
 import SideBar from "../../components/SideBar/SideBar";
+import ButtonUp from "../../components/ButtonUp/ButtonUp";
 
 const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -82,6 +83,7 @@ const Main = () => {
           />
         </div>
       </main>
+      <ButtonUp />
     </div>
   );
 };

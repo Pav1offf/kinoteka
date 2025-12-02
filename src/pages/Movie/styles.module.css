@@ -194,6 +194,7 @@ a:hover {
     display: block;
   }
 }
+
 @media (max-width: 855px) {
   .top {
     grid-template-columns: 1fr;

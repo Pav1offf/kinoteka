@@ -8,6 +8,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 import { countries } from "../../api/countries";
+import ButtonUp from "../../components/ButtonUp/ButtonUp";
 
 const MoviesCountry = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -52,6 +53,8 @@ const MoviesCountry = () => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
+
+        <ButtonUp />
       </main>
     </div>
   );

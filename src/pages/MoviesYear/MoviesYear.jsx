@@ -7,6 +7,7 @@ import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { ThemeContext } from "../../context/ThemeContext";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
+import ButtonUp from "../../components/ButtonUp/ButtonUp";
 
 const MoviesYear = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,6 +51,8 @@ const MoviesYear = () => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
+
+        <ButtonUp />
       </main>
     </div>
   );
