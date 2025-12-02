@@ -13,6 +13,7 @@ import Header from "../../components/Header/Header";
 import JobPersonList from "../../components/JobPersonList/JobPersonList";
 import MovieList from "../../components/MovieList/MovieList";
 import PopupPerson from "../../components/PopupPerson/PopupPerson";
+import ButtonUp from "../../components/ButtonUp/ButtonUp";
 
 const Movie = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -279,6 +280,8 @@ const Movie = () => {
         ) : null}
 
         {isOpen && <PopupPerson person={person} coordinates={coordinates} />}
+
+        <ButtonUp />
       </main>
     </div>
   );

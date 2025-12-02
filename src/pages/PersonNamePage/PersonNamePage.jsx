@@ -4,6 +4,7 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { getPerson } from "../../api/apiMovie";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/Header/Header";
+import ButtonUp from "../../components/ButtonUp/ButtonUp";
 
 const PersonNamePage = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -212,7 +213,10 @@ const PersonNamePage = () => {
                 ?.map((item, index) => {
                   return (
                     <li key={index}>
-                      <div className={styles.personFilm}>
+                      <div
+                        className={styles.personFilm}
+                        onClick={() => navigateTo(item.filmId)}
+                      >
                         <div>
                           <h3>{item.nameRu}</h3>
                           <p>{item.nameEn}</p>
@@ -228,6 +232,7 @@ const PersonNamePage = () => {
                 })}
             </ul>
           </div>
+          <ButtonUp />
         </main>
       </main>
     </div>
