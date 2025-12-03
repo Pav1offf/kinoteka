@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
 import { genres } from "../../api/genres";
 import { countries } from "../../api/countries";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContext";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
@@ -108,4 +108,4 @@ const SideBar = ({
   );
 };
 
-export default SideBar;
+export default memo(SideBar);

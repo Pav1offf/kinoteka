@@ -91,18 +91,6 @@
   color: #fff;
 }
 
-.params {
-  padding-top: 30px;
-}
-
-.params div {
-  margin-bottom: 15px;
-  font-size: 14px;
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  grid-gap: 30px;
-}
-
 a {
   cursor: pointer;
 }
@@ -117,70 +105,6 @@ a:hover {
   gap: 30px;
 }
 
-.ratings {
-  display: flex;
-  flex-direction: column;
-  font-weight: 900;
-  margin-bottom: 10px;
-}
-
-.ratingGreen {
-  font-size: 36px;
-  color: green;
-}
-.ratingGreen span {
-  font-size: 16px;
-}
-
-.ratingOrange {
-  font-size: 36px;
-  color: orange;
-}
-.ratingOrange span {
-  font-size: 16px;
-}
-
-.ratingRed {
-  font-size: 36px;
-  color: red;
-}
-.ratingRed span {
-  font-size: 16px;
-}
-
-.actors {
-  display: flex;
-  flex-direction: column;
-}
-
-.actorsTitle {
-  font-weight: 700;
-  padding-bottom: 10px;
-}
-
-.actorInner {
-  display: flex;
-  gap: 10px;
-  padding-bottom: 10px;
-}
-
-.actorPhoto {
-  display: none;
-  max-width: 64px;
-  max-height: 96px;
-  min-width: 64px;
-  min-height: 96px;
-}
-
-.actorPhotoImg {
-  width: 100%;
-  height: 100%;
-}
-
-.actor {
-  padding-bottom: 10px;
-}
-
 .sequels {
   padding-block: 20px;
 }
@@ -192,9 +116,6 @@ a:hover {
 @media (max-width: 1024px) {
   .top {
     gap: 20px;
-  }
-  .actorPhoto {
-    display: block;
   }
 }
 

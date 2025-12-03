@@ -1,0 +1,82 @@
+.ratings {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.ratingGreen {
+  font-size: 36px;
+  color: green;
+}
+.ratingGreen span {
+  font-size: 16px;
+}
+
+.ratingOrange {
+  font-size: 36px;
+  color: orange;
+}
+.ratingOrange span {
+  font-size: 16px;
+}
+
+.ratingRed {
+  font-size: 36px;
+  color: red;
+}
+.ratingRed span {
+  font-size: 16px;
+}
+
+.listFilms {
+  display: flex;
+  flex-direction: column;
+}
+
+.personFilms {
+  width: 70%;
+}
+
+.personFilms nav {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.personFilm {
+  display: flex;
+  padding: 20px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  border: 1px solid #fff;
+  border-radius: 10px;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-bottom: 3px solid #979797;
+}
+
+.btn:hover {
+  opacity: 0.6;
+}
+
+.personFilm:hover {
+  background-color: rgba(125, 124, 124, 0.4);
+}
+
+.btnActive {
+  border-bottom: 3px solid #f50;
+}
+
+@media (max-width: 768px) {
+  .personFilms {
+    width: 100%;
+  }
+}
