@@ -92,18 +92,6 @@
   color: #fff;
 }
 
-.params {
-  padding-top: 30px;
-}
-
-.params div {
-  margin-bottom: 15px;
-  font-size: 14px;
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  grid-gap: 30px;
-}
-
 a {
   cursor: pointer;
 }
@@ -112,149 +100,14 @@ a:hover {
   color: #ff5c00;
 }
 
-.infoRight {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.ratings {
-  display: flex;
-  flex-direction: column;
-  font-weight: 900;
-  margin-bottom: 10px;
-}
-
-.ratingGreen {
-  font-size: 36px;
-  color: green;
-}
-.ratingGreen span {
-  font-size: 16px;
-}
-
-.ratingOrange {
-  font-size: 36px;
-  color: orange;
-}
-.ratingOrange span {
-  font-size: 16px;
-}
-
-.ratingRed {
-  font-size: 36px;
-  color: red;
-}
-.ratingRed span {
-  font-size: 16px;
-}
-
-.actors {
-  display: flex;
-  flex-direction: column;
-}
-
-.actorsTitle {
-  font-weight: 700;
-  padding-bottom: 10px;
-}
-
-.actor {
-  padding-bottom: 10px;
-}
-
-.spouses {
-  display: flex;
-  flex-direction: column;
-}
-
-.facts {
-  padding-top: 20px;
-  width: 70%;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-}
-
-.listItem {
-  position: relative;
-  padding: 20px;
-
-  border-top: 1px solid rgba(125, 124, 124, 0.1);
-}
-
-.listItem::before {
-  position: absolute;
-  top: 21px;
-  left: 0;
-  display: block;
-  width: 8px;
-  height: 8px;
-  content: "";
-  border-radius: 50%;
-  background-color: rgba(125, 124, 124, 0.4);
-}
-
-.listFilms {
-  display: flex;
-  flex-direction: column;
-}
-
-.personFilms {
-  padding-top: 20px;
-  width: 70%;
-}
-
-.personFilm {
-  display: flex;
-  padding: 20px;
-  margin-bottom: 10px;
-  justify-content: space-between;
-  border: 1px solid #fff;
-  border-radius: 10px;
-}
-
-.btn {
-  display: inline-block;
-  cursor: pointer;
-  padding: 25px;
-  margin-bottom: 10px;
-  border-bottom: 3px solid #979797;
-}
-
-.btn:hover {
-  opacity: 0.6;
-}
-
-.personFilm:hover {
-  background-color: rgba(125, 124, 124, 0.4);
-}
-
-.btnActive {
-  border-bottom: 3px solid #f50;
-}
-
 @media (max-width: 1024px) {
   .top {
     gap: 20px;
   }
 }
+
 @media (max-width: 768px) {
   .top {
     grid-template-columns: 1fr;
-  }
-  .facts {
-    width: 100%;
-  }
-
-  .personFilms {
-    width: 100%;
-  }
-
-  .infoRight {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
   }
 }

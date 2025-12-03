@@ -1,0 +1,26 @@
+.infoRight {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.actors {
+  display: flex;
+  flex-direction: column;
+}
+
+.actorsTitle {
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+.actor {
+  padding-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .infoRight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

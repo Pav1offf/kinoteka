@@ -1,0 +1,36 @@
+.ratings {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.ratingGreen {
+  font-size: 36px;
+  color: green;
+}
+.ratingGreen span {
+  font-size: 16px;
+}
+
+.ratingOrange {
+  font-size: 36px;
+  color: orange;
+}
+.ratingOrange span {
+  font-size: 16px;
+}
+
+.ratingRed {
+  font-size: 36px;
+  color: red;
+}
+.ratingRed span {
+  font-size: 16px;
+}
+
+@media (max-width: 855px) {
+  .ratings {
+    order: 2;
+  }
+}

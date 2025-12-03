@@ -1,0 +1,11 @@
+.params {
+  padding-top: 30px;
+}
+
+.params div {
+  margin-bottom: 15px;
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  grid-gap: 30px;
+}
