@@ -16,6 +16,7 @@ import ButtonUp from "../../components/ButtonUp/ButtonUp";
 import MovieParams from "../../components/MovieParams/MovieParams";
 import MovieStarring from "../../components/MovieStarring/MovieStarring";
 import MovieRatings from "../../components/MovieRatings/MovieRatings";
+import PopupMovie from "../../components/PopupMovie/PopupMovie";
 
 const Movie = () => {
   const { theme } = useContext(ThemeContext);
@@ -30,6 +31,10 @@ const Movie = () => {
 
   const [isOpen, setIsOpen] = useState(null);
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
+
+  const [isOpenMovie, setIsOpenMovie] = useState(false);
+  const openModal = () => setIsOpenMovie(true);
+  const closeModal = () => setIsOpenMovie(false);
 
   const handleMouseEnter = useCallback((e, item) => {
     setCoordinates({ x: e.clientX, y: e.clientY });
@@ -104,10 +109,7 @@ const Movie = () => {
             </div>
             <p className={styles.desc}>{movie.shortDescription}</p>
 
-            <a
-              href={`https://www.kinopoisk.cx/film/${movie.kinopoiskId}`}
-              className={styles.button}
-            >
+            <a className={styles.button} onClick={openModal}>
               Смотреть
             </a>
 
@@ -130,6 +132,8 @@ const Movie = () => {
             />
           </div>
         </div>
+
+        {isOpenMovie && <PopupMovie movie={movie} closeModal={closeModal} />}
 
         <div className={styles.sequels}>
           <p>{movie.description}</p>
