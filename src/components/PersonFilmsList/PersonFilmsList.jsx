@@ -1,6 +1,7 @@
 import { memo, useState } from "react";
 import styles from "./styles.module.css";
 import { useNavigate } from "react-router-dom";
+import { translation } from "../../helpers/translation";
 
 const PersonFilmsList = ({ person, isLoading }) => {
   const [profession, setProfession] = useState("ACTOR");
@@ -38,7 +39,7 @@ const PersonFilmsList = ({ person, isLoading }) => {
               }`}
               onClick={() => setProfession(item.professionKey)}
             >
-              <h3>{item.professionKey}</h3>
+              <h3>{translation(item.professionKey)}</h3>
               <span>
                 {person.films
                   ?.filter(
